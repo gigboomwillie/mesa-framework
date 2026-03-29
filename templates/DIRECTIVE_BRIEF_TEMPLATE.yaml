@@ -1,0 +1,386 @@
+# DIRECTIVE_BRIEF_TEMPLATE.yaml
+# The MESA Framework Directive Brief for Executors
+#
+# BRIEF TYPE: directive
+# RECIPIENT RING: Ring 3 (Execution Layer) — Builders, developers, content creators,
+#                 and individual contributors who execute within spec.
+#
+# Purpose:
+# Directive briefs deliver clear instructions with all required context and inputs.
+# The thinking has been done at the orchestration layer. The executor's job is to
+# build within specification. When something is ambiguous, the executor stops and asks
+# rather than assumes.
+#
+# Who receives these: Builders, executors, individual contributors. Agents whose
+# authority is execution, not decision-making. They don't decide what gets built —
+# they build what's been decided.
+#
+# Why this works: Directive briefs reduce friction by providing complete context
+# upfront. Executors don't have to hunt for information or second-guess intent.
+# They build, flag ambiguity, and move on.
+#
+# Structure and reading order:
+# 1. Why This Matters (Human Principle: context first, why before what)
+# 2. The Specification (what to build, inputs, outputs, constraints)
+# 3. Definition of Done (explicit checklist of completion)
+# 4. Acceptance Criteria (how work will be verified)
+# 5. Ambiguity Flag (if unclear, stop and ask)
+#
+
+---
+
+# HEADER
+# Standard metadata for every brief. Populate all fields.
+
+header:
+  # Who is this from? (Orchestration agent, team lead, or decision-maker)
+  from: your_name_here
+
+  # Who is this to? (Builder name or team)
+  to: executor_name_or_team_here
+
+  # When was this sent? Format: YYYY-MM-DD
+  date: "2026-03-28"
+
+  # One-line subject. Specific, not generic. "Build Directive: User Export Feature" not "New Work"
+  subject: your_subject_line_here
+
+  # Identifies this as a directive brief. Do not change.
+  brief_type: directive
+
+
+# SECTION 1: WHY THIS MATTERS
+# The Human Principle: WHY before WHAT. Give context first.
+#
+# Many briefs jump to specifications. This section anchors the work in purpose.
+# Why should this executor care about getting this right? What does shipping this
+# enable? What breaks if it's not done? This is the meaning, not the mechanics.
+# It activates judgment and pride in the work.
+
+why_this_matters:
+  # What user need or business problem does this solve?
+  business_context: |
+    [Who needs this? What's the underlying problem?
+    Example: "Users are abandoning accounts because they can't export their data.
+    This feature addresses a trust and portability concern."]
+
+  # What does shipping this enable next?
+  strategic_impact: |
+    [How does this fit into the larger roadmap?
+    What becomes possible after this is shipped?
+    Example: "This unblocks our data portability roadmap and addresses
+    regulatory requirements for the EU market."]
+
+  # What happens if this doesn't get built?
+  consequence_of_delay: |
+    [What's at risk if this slips? Who's impacted?
+    Be honest about severity.
+    Example: "We lose EU users who require data export compliance.
+    Competitors are shipping this. We'll be behind."]
+
+  # Who cares about this? Who's cheering when it's done?
+  who_benefits: |
+    [Users, sales, operations, compliance, internal users?
+    Make it concrete and human.
+    Example: "Users who value data ownership. Sales team closing EU deals.
+    Legal team meeting compliance deadlines."]
+
+
+# SECTION 2: THE SPECIFICATION
+# What needs to be built. Inputs, outputs, constraints, requirements.
+#
+# Be complete. Every vague word will create friction downstream.
+# If you find yourself saying "I'll clarify that later," write it out now.
+# Clarity is a gift to the executor.
+
+specification:
+  # What is the deliverable? What does done look like at the highest level?
+  what_to_build: |
+    [One paragraph. What is this thing?
+    Example: "A user-initiated data export feature that generates a complete,
+    portable JSON export of all user data (account settings, created content,
+    activity history, preferences) that can be used to migrate to another platform
+    or archive locally."]
+
+  # What inputs does the builder have? What's available?
+  inputs: |
+    - existing_systems: |
+        [What systems exist that the builder should use or reference?
+        Example: "PostgreSQL user table schema is defined in schema/users.sql.
+        API authentication uses existing JWT middleware."]
+
+    - existing_code: |
+        [Are there similar features to learn from?
+        Example: "The backup system in services/backup.ts has export logic
+        we can adapt."]
+
+    - design_or_spec: |
+        [Is there a design document, wireframe, or earlier spec?
+        Example: "UI mockup is in Figma: [link]. Copy approved by content team."]
+
+    - data_sources: |
+        [Where does the data come from?
+        Example: "User data: user table. Content data: posts, comments, reactions.
+        Activity data: audit log."]
+
+    - constraints_or_requirements: |
+        [Non-functional requirements, technical constraints, compliance needs.
+        Example: "GDPR compliance: export must be complete and portable.
+        Performance: export generation must complete in < 30 seconds for typical user.
+        File size: uncompressed JSON must be < 1GB."]
+
+  # What does the executor deliver?
+  outputs: |
+    - deliverable_1: |
+        [What's the code deliverable?
+        Example: "POST /api/users/export endpoint that initiates async export job.
+        File: services/export.ts"]
+
+    - deliverable_2: |
+        [Backend changes, database, infrastructure?
+        Example: "Export job worker to generate JSON and upload to S3.
+        File: workers/exportJob.ts"]
+
+    - deliverable_3: |
+        [Frontend or user-facing changes?
+        Example: "Export button on account settings page.
+        Component: UserSettings/ExportButton.tsx"]
+
+    - deliverable_4: |
+        [Tests, documentation, or deployment considerations?
+        Example: "Integration tests for export endpoint. README in services/export/.
+        S3 bucket configuration documented in DEPLOYMENT.md."]
+
+  # What can't change? What's locked in?
+  constraints: |
+    - timeline: |
+        [When does this ship? Format: YYYY-MM-DD or relative: "by end of sprint"]
+        Target ship date: [DATE]
+
+    - technical: |
+        [Technology choices that are decided. Limitations to work within.
+        Example: "Must use existing S3 bucket (staging-exports). Cannot add
+        new third-party dependencies without approval. Backward-compatible
+        API changes only."]
+
+    - resource: |
+        [Who/what is available?
+        Example: "QA resources are booked Tuesday–Friday. Design is blocked
+        on other work until Friday. You have full backend capacity."]
+
+    - business: |
+        [Market, compliance, or business constraints?
+        Example: "GDPR compliance mandatory (EU launch dependent).
+        Export must complete before user deletion for audit compliance."]
+
+  # How will success be measured?
+  performance_requirements: |
+    - latency: |
+        [How fast must this be?
+        Example: "Export job initiation: < 100ms. Export generation: < 30s for
+        typical user (10K items). Download: standard S3 speed."]
+
+    - reliability: |
+        [How reliable must this be?
+        Example: "Export success rate: 99.5% (acceptable to retry manually).
+        No data loss on failure (job state persisted)."]
+
+    - scale: |
+        [How many users, how much data?
+        Example: "Must handle users with up to 1M items without timing out.
+        Must support 10,000 concurrent export requests during peak hours."]
+
+    - other_metrics: |
+        [Error handling, security, availability?
+        Example: "Proper error messages if export fails. Secure download link
+        expires after 24 hours. Endpoint rate-limited to 1 export per user per hour."]
+
+
+# SECTION 3: DEFINITION OF DONE
+# Explicit checklist. What does complete mean?
+#
+# This is how the executor knows they're done. This is how QA verifies completion.
+# Every item should be checkable, not subjective.
+
+definition_of_done:
+  # Code is written and follows standards
+  code_complete: |
+    ✓ Code implements specification completely
+    ✓ Code follows project style guide and patterns
+    ✓ No console.errors or debug logging left in
+    ✓ Code review completed and approved
+    ✓ Merge conflicts resolved
+    ✓ Code merged to main branch
+
+  # Tests are written and passing
+  tests_complete: |
+    ✓ Unit tests written for core export logic
+    ✓ Integration tests for API endpoint
+    ✓ All tests passing (100% success rate locally)
+    ✓ Test coverage meets team threshold (>80%)
+    ✓ Edge cases covered (empty exports, large exports, special characters)
+
+  # Documentation is done
+  documentation_complete: |
+    ✓ Code comments explain non-obvious logic
+    ✓ README/architecture document created in services/export/
+    ✓ API endpoint documented (request/response format)
+    ✓ Configuration documented (S3 bucket, environment variables)
+    ✓ Deployment notes added if infrastructure changes needed
+
+  # Performance verified
+  performance_verified: |
+    ✓ Load test run for typical user export (target time met)
+    ✓ Large user export tested (performance acceptable)
+    ✓ Database queries optimized (no N+1, no full table scans)
+    ✓ Memory usage acceptable for large exports
+
+  # Security and compliance
+  security_verified: |
+    ✓ User can only export their own data (authorization checked)
+    ✓ Download links are time-limited and secure
+    ✓ Exported data is encrypted in transit
+    ✓ No sensitive data (passwords, tokens) in export
+    ✓ GDPR compliance verified (completeness, portability)
+
+  # Deployed and operational
+  deployment_complete: |
+    ✓ Deployed to staging environment
+    ✓ Smoke test passed in staging
+    ✓ Feature flag created (if needed) and verified off
+    ✓ Ready for production deployment
+
+  # QA sign-off
+  qa_sign_off: |
+    ✓ QA tested happy path and error cases
+    ✓ QA verified performance requirements met
+    ✓ QA signed off (initials: ___)
+
+
+# SECTION 4: ACCEPTANCE CRITERIA
+# How will this work be verified? What does passing look like?
+#
+# Acceptance criteria are testable statements. A user, QA agent, or owner reads
+# these and can verify: "Yes, the work meets these criteria."
+
+acceptance_criteria:
+  # Functional requirements (behavior)
+  functional: |
+    - Users can click "Export My Data" on settings page
+    - System generates complete JSON export within 30 seconds
+    - Download link is emailed to user and available for 24 hours
+    - Exported JSON is valid, parseable, and imports into [comparison tool]
+    - Large exports (1M+ items) complete successfully
+    - Export includes all user data (settings, content, history, preferences)
+    - Export excludes sensitive data (passwords, tokens, internal IDs where replaceable)
+
+  # Non-functional requirements (quality, performance, reliability)
+  non_functional: |
+    - Export endpoint responds in < 100ms
+    - Export generation completes in < 30s (measured from 3 runs, median time)
+    - 99.5% of export jobs complete successfully
+    - Failed exports show clear error message to user
+    - Endpoint handles 10,000 concurrent requests without degrading
+    - Database queries use indexes (no full table scans)
+
+  # User experience requirements
+  user_experience: |
+    - User sees clear button and knows what it does
+    - User receives confirmation when export starts
+    - User receives email with download link
+    - Error messages are clear if export fails
+    - Download link works from email client (proper HREF)
+    - UI doesn't break on any browser/device we support
+
+  # Compliance and security requirements
+  compliance_and_security: |
+    - User can only download their own export (authorization verified)
+    - Download link expires after 24 hours
+    - Exported JSON is not cached publicly
+    - GDPR: export is complete and machine-readable
+    - No personally identifiable information leaks in error messages
+    - S3 bucket has appropriate access controls
+
+
+# SECTION 5: AMBIGUITY FLAG
+# If anything in this brief is unclear, stop and ask. Do not assume.
+#
+# This is intentional. The executor's job is to flag confusion, not to guess.
+# Ambiguity caught before building saves time downstream.
+#
+# The system prefers "executor stops and asks" over "executor builds wrong thing
+# and we find out at QA."
+
+ambiguity_flag: |
+  IF ANYTHING IN THIS BRIEF IS UNCLEAR, STOP HERE.
+
+  Do not assume you understand.
+  Do not build based on your best guess.
+  Do not proceed hoping clarification comes later.
+
+  Ask immediately. Examples of things worth asking about:
+
+  - "I'm not sure what 'activity history' includes. Do we export login events?
+    API calls? Just user-initiated actions?"
+
+  - "The 30-second timeline seems tight for 1M items. Is that a requirement
+    or an estimate?"
+
+  - "Should the export happen synchronously or async? The brief suggests
+    email-based delivery, which implies async, but the 30-second timeline
+    suggests synchronous."
+
+  - "We currently don't have user preferences stored. Should we add that,
+    or export only what exists?"
+
+  - "The spec says 'no internal IDs' but the schema uses internal UUIDs
+    for data relationships. How do we maintain data integrity without them?"
+
+  Better to ask now than ship wrong. Ask.
+
+
+# FOOTER COMMENTS
+# Explanation and guidance for builders receiving directive briefs.
+
+footer_comments: |
+  WHY DIRECTIVE BRIEFS WORK:
+
+  The executor doesn't make the decision. The decision-maker already did,
+  at the orchestration layer. The executor's job is to build within spec,
+  flag ambiguity, and ship.
+
+  This structure:
+  - Provides complete context upfront (Why This Matters)
+  - Eliminates hunting for specification details
+  - Makes success measurable (Definition of Done, Acceptance Criteria)
+  - Encourages flagging ambiguity early (Ambiguity Flag)
+  - Respects the executor's skill by being thorough, not micromanaged
+
+  WHO GETS THESE:
+
+  Directive briefs go to Ring 3 — the execution layer. Builders, content
+  creators, QA, infrastructure engineers. These agents execute. They don't
+  make architectural decisions (that's Ring 2). They don't set strategy
+  (that's Ring 1). They build.
+
+  HOW TO USE THIS BRIEF:
+
+  1. Read Why This Matters. Understand what you're shipping and why it
+     matters. This activates judgment.
+
+  2. Read Specification completely. You should have no questions about
+     WHAT to build.
+
+  3. Check Definition of Done and Acceptance Criteria. This is how you'll
+     know you're finished.
+
+  4. If ANYTHING is unclear, use the Ambiguity Flag section. Stop and ask.
+
+  5. Build.
+
+  6. Verify against Definition of Done before handing to QA.
+
+  This is the contract. You execute. You flag ambiguity. We build the
+  right thing on schedule.
+
+# END OF DIRECTIVE_BRIEF_TEMPLATE.yaml

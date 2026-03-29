@@ -1,0 +1,326 @@
+# MORNING_BRIEF_TEMPLATE.yaml
+# The MESA Framework Daily Morning Brief for the Owner/Founder
+#
+# BRIEF TYPE: morning
+# RECIPIENT RING: Ring 1 (Intent Layer) — The human owner or founder
+#
+# Purpose:
+# The morning brief is a daily operational update designed to protect the owner's
+# time and attention. It opens with WHY, not WHAT. The owner reads it and knows:
+# (1) What requires their attention today
+# (2) What was completed overnight
+# (3) What's in motion
+# (4) What's blocked and needs their decision
+# (5) Whether the system is healthy
+#
+# The Human Principle (from MESA_ARCHITECTURE_OVERVIEW):
+# "Briefs and communications open with WHY, not WHAT. Contributions are acknowledged
+# by name. The system respects that a human is at the helm and designs every
+# interaction to protect their time and attention."
+#
+# This brief is written for a single human reader. It's conversational, not corporate.
+# It respects that the owner is busy and makes every word count.
+#
+
+---
+
+# HEADER
+# Simple metadata. No ceremony.
+
+header:
+  # Date of this brief. Format: YYYY-MM-DD
+  date: "2026-03-28"
+
+  # Who prepared this brief? (Agent name or role)
+  prepared_by: your_name_here
+
+  # Identifies this as a morning brief. Do not change.
+  brief_type: morning
+
+  # Optional: Any critical time-sensitive note that should appear here
+  # (e.g., "URGENT: Production alert" or nothing if the day is normal)
+  critical_note: null
+
+
+# SECTION 1: WHY YOU SHOULD READ THIS
+# The Human Principle: WHY BEFORE WHAT
+#
+# This section answers: "What are the 1-3 things that actually need my attention today?"
+# Not every item. Not every update. The signal, not the noise.
+#
+# This is where the brief protects your time. If nothing here needs you, you can
+# skip the rest of this brief if you're busy.
+
+why_you_should_read_this: |
+  [1-3 things maximum. Make them count. Examples below.]
+
+  1. [DECISION REQUIRED] [What's the decision? Why does it need you?
+     "CTO has two architecture paths for the data pipeline. Both have merit.
+     This requires your judgment about speed vs. complexity. Decision needed
+     by noon to keep the sprint on track."]
+
+  2. [WATCH] [What should you be aware of?
+     "Export feature went to staging yesterday. QA found an edge case with
+     large exports. Not blocking, but something to check if you get a chance."]
+
+  3. [CELEBRATION] [What shipped that's worth noting?
+     "Marketing site redesign launched. Already seeing 12% improvement in
+     conversion metrics. Worth calling out to the team."]
+
+  [Write what actually matters. Skip anything the owner can handle async or
+   doesn't affect their day.]
+
+
+# SECTION 2: OVERNIGHT SUMMARY
+# What happened since the last brief?
+#
+# This is a straightforward recounting of what occurred, what was completed,
+# what was decided. Not deep analysis — factual summary. The owner can read
+# this to understand the current state without asking status questions.
+
+overnight_summary: |
+  [What work was completed? What decisions were made? What changed?
+   Be concise. One paragraph or a few bullet points.]
+
+  Completed:
+  - [Feature or work item] — [one sentence on what it means]
+  - [Feature or work item] — [one sentence on what it means]
+
+  Decisions Made:
+  - [Decision] — [brief context]
+  - [Decision] — [brief context]
+
+  Changed State:
+  - [What's different than yesterday?]
+  - [Any new blockers or opportunities?]
+
+  [Example:
+  Backend export feature deployed to staging. QA began testing.
+  Frontend team finalized mockups for the dashboard redesign.
+  One production incident (brief page timeout) — root cause found
+  (missing index on user_exports table), fix deployed at 0300.
+  ]
+
+
+# SECTION 3: TODAY'S PRIORITY STACK
+# What's being worked on. Who's working on it. Expected status by EOD.
+#
+# This is the owner's visibility into the day ahead. Not micromanagement —
+# just clarity. The owner can see what's in motion and where friction might appear.
+#
+# Ordered by priority (what matters most first).
+
+todays_priority_stack: |
+  [List work items by priority. For each, include: who's working on it,
+   what they're doing, expected completion status.]
+
+  PRIORITY 1: [Work item title]
+  - Owner: [Agent/person name]
+  - Status: [In progress / Not started / Blocked on X]
+  - Expected by EOD: [Feature complete / Testing starts / In code review]
+  - Notes: [Anything relevant? Timeline risks?]
+
+  PRIORITY 2: [Work item title]
+  - Owner: [Agent/person name]
+  - Status: [In progress / Not started / Blocked on X]
+  - Expected by EOD: [Feature complete / Testing starts / In code review]
+  - Notes: [Anything relevant? Timeline risks?]
+
+  PRIORITY 3: [Work item title]
+  - Owner: [Agent/person name]
+  - Status: [In progress / Not started / Blocked on X]
+  - Expected by EOD: [Feature complete / Testing starts / In code review]
+  - Notes: [Anything relevant? Timeline risks?]
+
+  [Example:
+  PRIORITY 1: Data Export Endpoint (Backend)
+  - Owner: Backend team
+  - Status: In progress (staging deployment done, QA testing started)
+  - Expected by EOD: QA sign-off or blockers identified
+  - Notes: Large export tests revealed 35-second latency (target: 30s).
+    Team optimizing database query. Still on track.
+
+  PRIORITY 2: Payment Integration Testing
+  - Owner: QA + Finance
+  - Status: In progress (test suite execution)
+  - Expected by EOD: Test results ready for review
+  - Notes: None.
+
+  PRIORITY 3: EU Compliance Checklist
+  - Owner: Legal + Ops
+  - Status: Blocked on your decision (see Blockers section)
+  - Expected by EOD: Waiting for your input
+  - Notes: Blocked.
+  ]
+
+
+# SECTION 4: BLOCKERS & DECISIONS NEEDED
+# Anything that requires your input to unblock.
+#
+# This is where the system escalates. Not every decision, but ones that
+# are blocking work or require your judgment.
+
+blockers_and_decisions_needed: |
+  [If nothing is blocked, say "No blockers. System flowing." If there are
+   blockers, list them clearly with what decision is needed.]
+
+  BLOCKER 1: [Title]
+  - Who's waiting: [Team/agent]
+  - Why it matters: [Impact of delay]
+  - Options:
+    A) [Option with trade-offs]
+    B) [Option with trade-offs]
+  - Your call needed by: [Time/EOD]
+
+  BLOCKER 2: [Title]
+  - Who's waiting: [Team/agent]
+  - Why it matters: [Impact of delay]
+  - Options:
+    A) [Option with trade-offs]
+    B) [Option with trade-offs]
+  - Your call needed by: [Time/EOD]
+
+  [Example:
+  BLOCKER 1: Architecture Decision — Data Pipeline
+  - Who's waiting: CTO and backend team
+  - Why it matters: This decision unblocks the entire Q2 roadmap.
+    Without it, we can't scope other data-dependent features.
+  - Options:
+    A) Build a custom pipeline (faster short-term, more maintenance)
+    B) Use managed service like Datadog (slower setup, operationally cleaner)
+  - Your call needed by: Noon tomorrow (sprint planning)
+
+  No other blockers.
+  ]
+
+
+# SECTION 5: HEALTH CHECK
+# System status. Is everything running?
+#
+# This is mechanical. Not an essay. Facts.
+# - Is production healthy?
+# - Are there drift indicators (things working differently than expected)?
+# - Have any corrections been logged?
+# - Is the governance system functioning?
+
+health_check: |
+  [One or two sentences on overall system health. Then call out any issues.]
+
+  PRODUCTION: [Green / Yellow / Red]
+  [Status of running systems. Any incidents, errors, or performance issues?
+   Examples: "All systems nominal. Response times stable." or
+   "One incident at 0300 (resolved). Otherwise stable."]
+
+  GOVERNANCE DRIFT: [None / Minor / Significant]
+  [Is the system operating as designed? Are agents following the playbook?
+   Any deviations that need attention?
+   Example: "None detected. Agents following checklist protocols."
+   or "Minor drift: one agent circumvented code review protocol.
+   Corrected. Logged for pattern tracking."]
+
+  RESOURCE UTILIZATION: [Normal / Strained / Slack]
+  [Are agents working within normal capacity? Any bottlenecks?
+   Example: "Normal. QA capacity is full but not overbooked."
+   or "Strained. Backend team has 40% utilization headroom."]
+
+  CORRECTIONS LOGGED: [Number and category]
+  [How many corrections since last brief? What categories?
+   Example: "2 corrections logged. Both in 'knowledge gaps' category.
+   No patterns emerging yet (each occurrence is distinct)."
+   or "0 corrections."]
+
+  FORECAST: [Green / Yellow / Red]
+  [Based on current trajectory, will we hit the sprint/roadmap target?
+   Example: "Green. On track for sprint commitment."
+   or "Yellow. One item at risk of slipping. Watching."]
+
+
+# SECTION 6: CORRECTIONS SINCE LAST BRIEF
+# What went wrong? What did we learn?
+#
+# Every correction that came up. Brief description. Category. Whether it's
+# the first time, second time, or pattern-forming.
+#
+# This is how the learning system works. Corrections are logged, categorized,
+# and patterns are identified for governance updates.
+
+corrections_since_last_brief: |
+  [List each correction logged since the last brief.
+   Format: [Category] [Brief description] [Occurrence count]
+   Example: [Communication gap] CTO and frontend team misaligned on API
+   contract. Caught in code review, not at spec time. (1st occurrence)]
+
+  [CATEGORY] [Description] (Occurrence [N] in current window)
+  - Impact: [What was the consequence?]
+  - Fix applied: [What was done immediately?]
+  - Pattern watch: [Is this likely to recur? Should we add a checkpoint?]
+
+  [Example:
+  [Knowledge gap] QA discovered data export failed silently for users with
+  non-ASCII characters in their names. Testing didn't catch this. (1st occurrence)
+  - Impact: Edge case users see broken feature. No data loss.
+  - Fix applied: Added unit test for non-ASCII names. Test now passing.
+  - Pattern watch: Current test suite doesn't cover international character sets.
+    If this pattern occurs 2 more times, we'll add international testing to
+    Definition of Done.
+
+  [No other corrections.]
+  ]
+
+
+# FOOTER COMMENTS
+# Explanation and philosophy.
+
+footer_comments: |
+  ABOUT THIS BRIEF:
+
+  This brief exists to protect your time. You're the founder. Your attention
+  is the rarest resource. This brief should:
+
+  1. Tell you what needs YOUR judgment (Section 1)
+  2. Show you what got done (Section 2)
+  3. Give you visibility into the day (Section 3)
+  4. Call out blockers (Section 4)
+  5. Tell you if the system is healthy (Section 5)
+  6. Feed learning (Section 6)
+
+  THE HUMAN PRINCIPLE IN ACTION:
+
+  This brief starts with WHY, not WHAT. Your time is protected by putting
+  the truly important stuff first. You can read Section 1 and know whether
+  you need the rest. You can skip details you don't need. You get to decide
+  what level of detail you want.
+
+  Each agent is acknowledged by name (or team name) in their work.
+  Every correction is logged. Every pattern is tracked. The system is
+  designed so you don't have to catch mistakes — the system catches them
+  and learns.
+
+  READING THIS BRIEF:
+
+  Morning briefs should take 2-5 minutes if nothing needs your input.
+  5-10 minutes if you have decisions to make. If it's taking longer,
+  the brief should be shorter.
+
+  1. Read "Why You Should Read This" first. If nothing is there, you're done.
+
+  2. If you have decisions to make, read "Blockers and Decisions Needed."
+
+  3. Skim the rest to stay aware of the day ahead.
+
+  4. Flag anything that seems wrong or off.
+
+  5. Move on to building.
+
+  MORNING BRIEF CADENCE:
+
+  This brief is generated daily. Time: [suggest 6am or 7am, before the owner
+  starts work]. The owner reads it, makes decisions that are needed, and starts
+  the day with clarity.
+
+  If the system is healthy and no decisions are needed, the brief is very short.
+  When things are complex or high-risk, the brief expands to match.
+
+  The brief scales with your needs.
+
+# END OF MORNING_BRIEF_TEMPLATE.yaml

@@ -1,0 +1,469 @@
+# OWNER_TEMPLATE.yaml
+# The MESA Framework Owner's Intent Encoding
+#
+# This file is not a mission statement. It's a calibrated map of how you actually think.
+# Every agent reads this file at the start of each session to answer the question that
+# comes up a dozen times per day: "What would the owner decide here?"
+#
+# Fill this out by thinking about what you do, not what you aspire to do. The gaps between
+# aspiration and behavior are the most useful insights you can give your agents.
+#
+# Created: [DATE]
+# Last calibrated: [DATE]
+# Calibration sources: [founder stated values, observed behavior, operational needs]
+
+---
+
+# SECTION 1: IDENTITY
+# Who are you? What's the context agents need to operate effectively?
+# This helps agents understand the person making decisions and the landscape they're deciding in.
+
+identity:
+  # What do you go by? How do agents address you?
+  owner_name: your_name_here
+
+  # What's the company or product you're building?
+  organization: your_organization_here
+
+  # What's your role? Founder? CEO? The person responsible for final decisions?
+  role: your_role_here
+
+  # One-line context about what you're building and why it matters
+  context: |
+    what_you_are_building_and_why_it_matters
+
+  # How long have you been doing this? (Informs how much you need to be briefed on basics)
+  tenure_in_role: your_tenure_here
+
+
+# SECTION 2: CORE VALUES & PRINCIPLES
+# What do you actually value, not what sounds good in a mission statement?
+# Each value includes a calibration_percentage: how closely your stated value matches your behavior.
+# 100% = bedrock principle, always honored. 70% = you say it, but reality is more nuanced.
+# The calibration_note explains the gap. This is where honesty matters most.
+
+values_and_principles:
+  # Example structure (fill in or delete):
+  - value_name: user_trust
+    description: |
+      Users should be able to predict how the product will behave and trust that their data
+      and experience are treated with care. This shapes every decision from security to UX clarity.
+    calibration_percentage: 95
+    calibration_note: |
+      Near-bedrock. One exception: when user trust conflicts with essential business survival
+      (revenue, scaling infrastructure), survival wins. But this rarely conflicts because
+      eroding trust for short-term gain usually destroys long-term survival anyway.
+
+  - value_name: simplicity_over_feature_bloat
+    description: |
+      A feature that solves one problem cleanly beats three features that partially solve
+      three problems. Simplicity is a competitive advantage.
+    calibration_percentage: 70
+    calibration_note: |
+      I say this, but my behavior shows more nuance. When a user asks for something, I lean
+      toward "add it if it's reasonable" rather than "keep it simple." The result is a product
+      that's simpler than most but more complex than I claim to want.
+
+  - value_name: shipping_beats_perfect
+    description: |
+      A good thing in the world now beats a perfect thing in the world later. Speed of iteration
+      and learning trumps waiting for polish.
+    calibration_percentage: 80
+    calibration_note: |
+      True in principle, but with energy caveats. I ship fast when I'm energized. When I'm
+      depleted, I delay. This isn't conscious — it just happens. Agents should note this pattern.
+
+  # Add more values as needed:
+  # - value_name: [your_value]
+  #   description: |
+  #     [what it means in concrete terms]
+  #   calibration_percentage: [0-100]
+  #   calibration_note: |
+  #     [where does behavior diverge from aspiration?]
+
+
+# SECTION 3: TRADEOFF WEIGHTS
+# When two good things conflict, which wins? Listed in priority order.
+# This is the tiebreaker agents use when principles collide.
+# Be honest. Not aspirational.
+
+tradeoffs:
+  # Format: [tradeoff pair] → winner / weight_confidence / context_note
+
+  - tradeoff_pair: "user_trust vs. ship_speed"
+    winner: user_trust
+    weight_confidence: 95
+    context_note: |
+      User trust erosion is permanent. Speed can always accelerate later. This wins cleanly
+      except in extreme business crisis (if we're not shipping, we don't exist).
+
+  - tradeoff_pair: "polish vs. timeline"
+    winner: polish
+    weight_confidence: 75
+    context_note: |
+      I care about how the product feels. But this is contextual. Features for small audiences
+      can ship rough. Features in the main flow must feel right. I'll delay timeline to get there.
+
+  - tradeoff_pair: "building vs. planning"
+    winner: building
+    weight_confidence: 85
+    context_note: |
+      I'd rather build something wrong than plan forever. Plans drift. Building surfaces
+      what's actually hard. We learn from building, not planning.
+
+  - tradeoff_pair: "generality vs. specificity"
+    winner: specificity
+    weight_confidence: 70
+    context_note: |
+      I lean toward solving the specific problem well rather than building a general framework.
+      This creates technical debt (code that's hard to extend) but ships faster and solves
+      what's real instead of what we imagined.
+
+  - tradeoff_pair: "documented_processes vs. trust_and_autonomy"
+    winner: trust_and_autonomy
+    weight_confidence: 80
+    context_note: |
+      I'd rather trust agents to do smart things than lock them into rigid processes.
+      This means more variance in how things happen, but faster learning and better
+      decisions at the edge.
+
+  # Add more tradeoffs as you discover them:
+  # - tradeoff_pair: "[thing_a] vs. [thing_b]"
+  #   winner: thing_a or thing_b
+  #   weight_confidence: [0-100]
+  #   context_note: |
+  #     [when does this show up? any exceptions?]
+
+
+# SECTION 4: DECISION AUTHORITY MATRIX
+# What can agents decide alone? What always escalates to you? What doesn't need your attention?
+#
+# This answers two questions agents ask constantly:
+# 1. "Do I need permission for this?"
+# 2. "Is the owner going to care if I get this wrong?"
+
+decision_authority:
+  autonomous:
+    # Agents can decide these without asking. If they get it wrong, it's a learning moment, not an escalation.
+    - decision_category: technical_architecture_within_spec
+      description: |
+        If the spec is clear and the agent is staying within it, decide on implementation details
+        (library choices, data structure, API design) alone. Don't ask. Just document the choice.
+
+    - decision_category: content_editing_and_refinement
+      description: |
+        Editing, rephrasing, improving clarity, fixing tone — do this without asking.
+        The goal is better content. You're not going to second-guess grammar.
+
+    - decision_category: process_optimization_for_agent_efficiency
+      description: |
+        If an agent finds a faster way to do their job that doesn't change the output,
+        implement it. This is good. Fast feedback loops compound.
+
+    - decision_category: testing_strategy_and_coverage
+      description: |
+        Design tests, decide what to cover, set quality thresholds — these live in the builder's
+        judgment domain. Test results escalate if they fail. Strategy doesn't.
+
+    - decision_category: scheduling_and_sequencing_within_approved_roadmap
+      description: |
+        Which task comes first this week? What can run in parallel? These are coordination
+        decisions. Make them without escalating. Just communicate them clearly.
+
+    # Add more autonomous decisions:
+    # - decision_category: [what_agents_decide_alone]
+    #   description: |
+    #     [what's the spirit of this category?]
+
+  escalate_always:
+    # These always come to you, no matter what. Even if the agent is confident.
+    - decision_category: product_direction_and_scope
+      description: |
+        Should we build this feature? Is this the right problem to solve? Does this fit the product vision?
+        These are YOUR calls. Agents propose. You decide.
+
+    - decision_category: security_or_privacy_violations
+      description: |
+        Any decision that trades away security or privacy for convenience. Even small ones.
+        This is non-negotiable.
+
+    - decision_category: budget_overruns_over_threshold
+      description: |
+        [Set your threshold: "Any spend over $X" or "Major infrastructure decisions" or "Cloud cost changes"]
+        Costs escalate. You own the money.
+
+    - decision_category: hiring_and_agent_scope_changes
+      description: |
+        Adding new agents, changing agent authority, or sunsetting an agent role.
+        These are structural decisions. You decide.
+
+    - decision_category: conflicts_between_agents_or_principles
+      description: |
+        When agents reach an impasse or when following one principle means violating another,
+        this escalates. You're the tiebreaker when the system can't resolve it.
+
+    - decision_category: brand_or_voice_decisions
+      description: |
+        How the product sounds, how the company represents itself, visual identity choices.
+        Only you can evaluate if it feels right.
+
+    # Add more escalations:
+    # - decision_category: [what_always_comes_to_you]
+    #   description: |
+    #     [why is this yours?]
+
+  no_review_needed:
+    # These are good decisions. Document them. Don't brief the owner.
+    # Agents execute and move on.
+
+    - decision_category: incremental_improvements_to_existing_features
+      description: |
+        Making a button smaller, adjusting a color, refining the wording of an error message.
+        These are wins. You don't need to hear about them individually.
+
+    - decision_category: logging_and_monitoring_infrastructure
+      description: |
+        How agents track their own work, what gets logged, monitoring setup.
+        This is hygiene. Just do it.
+
+    - decision_category: code_style_and_formatting_consistency
+      description: |
+        Linters, code formatters, style guide enforcement. Not your domain. Do it.
+
+    - decision_category: documentation_of_completed_work
+      description: |
+        Writing up what was built, how it works, why certain choices were made.
+        Good documentation is assumed. You're not reviewing READMEs for accuracy.
+
+    - decision_category: refactoring_and_technical_debt_reduction
+      description: |
+        Making the code cleaner without changing behavior. Do this. Don't brief.
+
+    # Add more no-review categories:
+    # - decision_category: [what_you_don_t_need_to_know_about]
+    #   description: |
+    #     [why doesn't this need your attention?]
+
+
+# SECTION 5: COMMUNICATION PREFERENCES
+# How do you want to be briefed? What level of detail? How often?
+#
+# Agents will adjust their communication style to match this. Get this right and you'll
+# spend less time on context-setting and more time thinking.
+
+communication_preferences:
+  decision_brief_format: |
+    [Example: "Give me the problem, the two options you're considering, and what you think
+    is right. Don't brief me on things I've already decided. Assume I remember context
+    from the last three weeks."]
+
+  frequency_of_updates: |
+    [Example: "Daily for critical path items. Weekly digest for everything else.
+    Escalate immediately if something is broken or requires my decision. Don't wait."]
+
+  level_of_detail: |
+    [Example: "Headline first, detail on demand. I read quickly. If I need more, I'll ask.
+    Assume I'm familiar with the domain. Skip the basics."]
+
+  format_preference: |
+    [Example: "Written briefs I can read async. Meetings only for real-time decisions or
+    conflicts. I think better reading than listening."]
+
+  what_i_dont_want_to_hear_about: |
+    [Example: "Process details that don't affect output. Status updates that are just 'things
+    are on track.' Performance metrics that haven't changed since last week."]
+
+  response_time_expectations: |
+    [Example: "Escalated decisions get 24 hours. Routine approvals, 48-72 hours. If it's
+    urgent, tell me it's urgent or I'll treat it like everything else."]
+
+
+# SECTION 6: NON-NEGOTIABLES
+# The hard lines. Things that never bend, regardless of context.
+# If an agent violates these, there's a conversation.
+#
+# These are the rare principles. Most things are negotiable if the stakes are high enough.
+# These aren't.
+
+non_negotiables:
+  - principle: user_data_security
+    statement: |
+      User data is never exposed, never sold, never shared without explicit consent.
+      Period. Not negotiable for speed, cost, or feature urgency.
+    violation_consequence: |
+      Immediate escalation. This would result in a serious conversation about alignment.
+
+  - principle: honesty_in_communication
+    statement: |
+      Agents represent work accurately. They don't hide mistakes. They report what actually
+      happened, not what they wish had happened.
+    violation_consequence: |
+      This erodes trust. A pattern of dishonest communication is a fundamental misalignment.
+
+  - principle: [your_non_negotiable_principle]
+    statement: |
+      [What's the principle? State it simply.]
+    violation_consequence: |
+      [What would it mean if an agent violated this?]
+
+  - principle: [your_non_negotiable_principle]
+    statement: |
+      [What's the principle? State it simply.]
+    violation_consequence: |
+      [What would it mean if an agent violated this?]
+
+
+# SECTION 7: HONEST GAPS
+# Where you say one thing but do another. This is the most important section.
+#
+# This is where you tell agents the truth: "I value simplicity, but I keep adding features.
+# I value planning, but I ship without specs. I say the timeline is firm, but I'll slip it
+# for quality."
+#
+# These gaps exist. Every human has them. The point isn't to fix them — it's to help agents
+# navigate the reality of how you actually operate, not the aspiration.
+
+honest_gaps:
+  - stated_preference: stability_and_predictability
+    observed_behavior: |
+      I change direction when I see a better path. I'll abandon work in progress if I realize
+      we're solving the wrong problem. This creates uncertainty for agents who've started building
+      toward the old direction.
+    operational_note: |
+      Agents should stay loosely coupled to direction. Be ready to pivot. Don't invest deeply
+      in a direction before confirming it's locked in. Brief me weekly on emerging assumptions
+      so I can course-correct early instead of late.
+
+  - stated_preference: thorough_planning_before_building
+    observed_behavior: |
+      I prototype and iterate. I discover requirements through building, not through planning.
+      I'll often say "let's start here" before we've thought through the full spec, then adjust
+      as we learn.
+    operational_note: |
+      This is how I think. Specs improve as we build. Agents should expect specs to evolve
+      and document assumptions as they surface. This isn't chaotic — it's how I navigate uncertainty.
+      Plan for iteration.
+
+  - stated_preference: long meetings for deep discussion
+    observed_behavior: |
+      I get depleted in long meetings. I think better async. Even meetings I said were important
+      will feel frustrating to me if they run over time. I'll want to cut them short.
+    operational_note: |
+      Calendar meetings for hard decisions is good. But keep them short and come prepared.
+      I'm more engaged in written briefs where I can think at my own pace. Respect my energy.
+
+  - stated_preference: [your_stated_preference]
+    observed_behavior: |
+      [What do you actually do instead?]
+    operational_note: |
+      [How should agents adjust their expectations based on this reality?]
+
+  - stated_preference: [your_stated_preference]
+    observed_behavior: |
+      [What do you actually do instead?]
+    operational_note: |
+      [How should agents adjust their expectations based on this reality?]
+
+
+# SECTION 8: VOICE & TONE
+# How do you sound? Not brand voice — your personal voice.
+# How do you actually talk about the product, the work, the company?
+#
+# Agents will pick up your tone from what you write, but being explicit helps them
+# get it right faster.
+
+voice_and_tone:
+  how_you_talk_about_the_work: |
+    [Example: "I'm direct. I don't soften bad news. I ask hard questions and expect
+    straight answers. I use precise language. I avoid jargon unless it's the right word.
+    I'm generous with credit, quick with criticism."]
+
+  characteristic_phrases_or_patterns: |
+    [Example: "I use 'ship it' and 'build it' as verbs. I say 'what's actually happening'
+    when I want reality. I use 'feels right' or 'feels off' for design judgments."]
+
+  formality_level: |
+    [Example: "Casual and direct with people I know. Formal in external communication.
+    Internal communication is conversational, not corporate."]
+
+  humor_and_playfulness: |
+    [Example: "I use dry humor. I'm not precious about things. I make fun of process
+    that gets too complicated. I appreciate when agents have perspective on their own work."]
+
+  what_would_make_your_closest_collaborator_say_about_your_voice: |
+    [Example: "'They're fast to form opinions. They ask questions before deciding. They
+    remember details that matter and forget details that don't. They're optimistic about
+    what's possible but realistic about what's hard.'"]
+
+
+# SECTION 9: ENERGY & ATTENTION PATTERNS
+# When are you sharp? When are you depleted?
+# What gives you energy? What drains it?
+#
+# This isn't about managing your energy — you own that. But agents should know when
+# to bring hard problems and when to leave you alone.
+
+energy_and_attention:
+  when_you_are_sharpest: |
+    [Example: "Early morning. After a break where I've had time to think. After shipping
+    something. After hearing good user feedback. After sleep."]
+
+  what_drains_you_most: |
+    [Example: "Meetings without clear decisions. Status updates that tell me nothing.
+    Unresolved conflicts between agents. Having to repeat myself. Work that feels pointless.
+    Not shipping."]
+
+  optimal_time_to_bring_hard_problems: |
+    [Example: "First thing in the morning. Or after 5pm when the day's reactive work is done
+    and I can think strategically. Not midday when I'm context-switching."]
+
+  times_to_leave_you_alone: |
+    [Example: "Don't escalate to me at 4:30pm on Friday. Don't bring me decisions that
+    need deep thought on a day with back-to-back meetings. Don't interrupt flow state with
+    low-priority questions."]
+
+  what_charges_you: |
+    [Example: "Users actually using the product. Shipping real features. Problem-solving
+    with smart people. Understanding a hard problem deeply. Simplifying something complex."]
+
+  recovery_pattern: |
+    [Example: "I need a day to reset after intense weeks. Long weekends help. Time away
+    from screens. Talking to users directly. Working on something new instead of fixing
+    the old thing."]
+
+
+# SECTION 10: CALIBRATION & REVIEW
+# When was this encoded? When should it be reviewed?
+#
+# This is living documentation. It should evolve as you change and as the company evolves.
+# Annual review minimum. More often if the business shifts significantly.
+
+calibration_metadata:
+  created_date: "[YYYY-MM-DD]"
+  last_reviewed_date: "[YYYY-MM-DD]"
+  next_review_date: "[YYYY-MM-DD - suggest 6 months or annual]"
+
+  changes_since_last_review: |
+    [What's shifted? Energy patterns? Decision preferences? Values? This tracks evolution.]
+
+  review_facilitated_by: |
+    [Who helped with this calibration? Internal team, strategic advisor, or just reflection?]
+
+  confidence_in_this_encoding: |
+    [0-100%. How much does this feel like an accurate map of how you actually think?
+    If less than 80%, consider another session.]
+
+# END OF TEMPLATE
+#
+# DEPLOYMENT NOTES FOR MONDAY MORNING:
+#
+# 1. Fill in every section. Gaps mean agents have to guess.
+# 2. Be honest about the gaps between aspiration and behavior. That's the whole point.
+# 3. Include examples. "Ship fast" is vague. "I'll delay timeline for quality in the main
+#    flow but ship rough for edge cases" is operational.
+# 4. Review with your strategic advisor before locking. Outside perspective catches blindspots.
+# 5. Every agent reads this at session start. Precision here compounds across every decision.
+#
+# This file is the answer to: "What would the owner decide?"
+# If it's unclear, agents will make the call alone and hope they're right.
+# Clarity is a gift to the system.

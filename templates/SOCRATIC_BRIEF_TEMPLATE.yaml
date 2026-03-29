@@ -1,0 +1,211 @@
+# SOCRATIC_BRIEF_TEMPLATE.yaml
+# The MESA Framework Socratic Brief for Decision-Makers
+#
+# BRIEF TYPE: socratic
+# RECIPIENT RING: Ring 2 (Orchestration Layer) — COO, CTO, and decision-making agents
+#
+# Purpose:
+# Socratic briefs present a problem and ask the recipient to reason independently
+# before revealing the sender's thinking. This structure surfaces the recipient's
+# knowledge and judgment, especially valuable when the recipient is closer to the
+# work than the sender.
+#
+# Who receives these: Department heads, orchestration agents, agents whose authority
+# is decision-making rather than execution. These agents have broad context and should
+# be thinking independently, not following directives.
+#
+# Why this works: The agent closest to the work often sees things the sender can't.
+# Independent reasoning first creates opportunity for the agent to surface that knowledge.
+# Their thinking is compared against the sender's. The best version of both becomes
+# the final recommendation.
+#
+# Structure and reading order:
+# 1. Problem (the agent investigates and reasons)
+# 2. Our Thinking (the sender's proposed solution — read ONLY after forming your own)
+# 3. Learning Log (what pattern prompted this brief, occurrence count, category)
+# 4. Synthesis (where thinking aligned, where it diverged, final recommendation)
+#
+
+---
+
+# HEADER
+# Standard metadata for every brief. Populate all fields.
+
+header:
+  # Who is this from? (Agent name, role title, or team)
+  from: your_name_here
+
+  # Who is this to? (Decision-maker's name and title)
+  to: recipient_name_here
+
+  # When was this sent? Format: YYYY-MM-DD
+  date: "2026-03-28"
+
+  # One-line subject. Make it specific. Not "Update" but "Route Decision: AWS vs. GCP Migration"
+  subject: your_subject_line_here
+
+  # Identifies this as a socratic brief. Do not change.
+  brief_type: socratic
+
+
+# SECTION 1: THE PROBLEM
+# Describe the situation the recipient needs to reason through.
+#
+# This section gives the agent everything they need to form an independent assessment.
+# Be complete: what's the context, what's at stake, what's the decision or question?
+# Don't hint at the answer. Let them think.
+
+problem:
+  context: |
+    [What is the situation? What brought this to the decision-maker's attention?
+    What's changed that makes a decision necessary now?
+    Include any constraints, timeline pressure, or business context.]
+
+  current_state: |
+    [What's happening right now? What data or observations do we have?
+    Be factual, not interpretive.]
+
+  key_tensions: |
+    [What's pulling in different directions? Where do good options conflict?
+    This helps the agent understand why the decision is hard.]
+
+  questions_for_your_assessment: |
+    [What should the agent think through independently?
+    These are genuine questions, not rhetorical ones:
+    - What matters most here from your vantage point?
+    - What risks do you see that I might miss?
+    - What constraints am I not understanding correctly?
+    - If you had to recommend one path, what would it be and why?]
+
+
+# SECTION 2: OUR THINKING
+# The sender's proposed analysis and solution.
+#
+# This section is explicitly marked "READ ONLY AFTER FORMING YOUR OWN ASSESSMENT."
+# The agent reads Section 1, forms their thinking, then reads this to compare.
+# This respects their judgment and surfaces blind spots in both directions.
+
+our_thinking:
+  # This header is intentional. It signals: come back after you've thought.
+  read_only_after_assessment: |
+    *** READ THIS ONLY AFTER YOU'VE FORMED YOUR OWN ASSESSMENT ***
+    (If you read this first, the Socratic method doesn't work. Go back to Section 1.)
+
+  # The sender's proposed analysis. Be clear about reasoning.
+  proposed_analysis: |
+    [What is the sender's reading of the situation?
+    What data or patterns inform this reading?
+    What reasoning connects the problem to the proposed solution?]
+
+  # The sender's recommended path forward. State it clearly.
+  recommended_path: |
+    [What should we do? Why this path over alternatives?
+    What trade-offs is the sender accepting?]
+
+  # What might the agent see that the sender doesn't. Invite challenge.
+  assumptions_we_are_making: |
+    [What are we assuming to be true for this recommendation to work?
+    Which of these assumptions is the agent best positioned to validate or challenge?]
+
+
+# SECTION 3: LEARNING LOG
+# Pattern documentation. Why did this brief need to happen?
+#
+# Every Socratic brief is triggered by a finding that appears multiple times.
+# This section logs that pattern so the system learns without requiring
+# the owner's attention for every occurrence.
+
+learning_log:
+  # The core finding. What pattern is repeating?
+  finding: |
+    [What did we notice that prompted this brief?
+    Example: "Architectural decisions are made without input from the team that maintains them."]
+
+  # How many times has this shown up in what timeframe?
+  occurrence_count: |
+    This is the [Nth] time in [timeframe] that we've seen this pattern.
+    Previous occurrences: [list dates or brief references]
+
+  # How should we categorize this for long-term learning?
+  # Use existing categories or create new ones as needed.
+  pattern_category: |
+    [Decision friction / Communication gap / Authority ambiguity /
+    Knowledge siloing / Process breakdown / Other]
+
+  # What will change if we keep seeing this pattern?
+  escalation_note: |
+    If this pattern continues, it suggests [what structural change is needed?]
+    Three occurrences of this pattern would warrant adding a checkpoint or
+    governance entry.
+
+
+# SECTION 4: SYNTHESIS
+# Where thinking aligned, where it diverged, and the final recommendation.
+#
+# This section is filled in AFTER both parties have formed their thinking.
+# It's collaborative reasoning, not the sender imposing a solution.
+
+synthesis:
+  # Where did thinking align? What's solid ground?
+  aligned_thinking: |
+    [What did both the agent and sender conclude the same way about?
+    These points are high-confidence — they've been validated from two angles.]
+
+  # Where did thinking differ? What did each see that the other didn't?
+  points_of_divergence: |
+    [Where did the agent's reasoning differ from the sender's?
+    What did the agent see that the sender missed?
+    What did the sender see that the agent hadn't weighted correctly?]
+
+  # Incorporate the best thinking from both sides.
+  integrated_recommendation: |
+    [Taking both perspectives into account, what's the strongest path forward?
+    Where has the agent's independent judgment improved on the sender's proposal?
+    Where does the sender's broader context improve the agent's thinking?
+    This is the final call, informed by two perspectives.]
+
+  # What's the next step? Who does what?
+  next_steps: |
+    [What happens now? Who owns what?
+    What decision needs to be logged?
+    When do we revisit this?]
+
+
+# FOOTER COMMENTS
+# Explanation and guidance for agents receiving Socratic briefs.
+
+footer_comments: |
+  WHY SOCRATIC BRIEFS WORK:
+
+  The agent closest to the problem is often the best thinker on that problem.
+  A Socratic brief honors that by asking first, then showing. This structure:
+
+  - Surfaces the agent's knowledge without the sender filtering it through
+    their own assumptions.
+  - Creates opportunity for the agent to spot things the sender missed.
+  - Respects the agent's authority in their domain.
+  - Builds confidence through collaborative reasoning instead of directive
+    acceptance.
+
+  WHO GETS THESE:
+
+  Socratic briefs go to Ring 2 — the orchestration layer. These are the
+  agents who make decisions: the COO translating intent to execution,
+  the CTO translating intent to architecture. They need to think
+  independently. A directive would short-circuit that thinking.
+
+  Socratic briefs do NOT go to Ring 3 (builders). Ring 3 receives directive
+  briefs because the thinking has already been done at the orchestration layer.
+
+  HOW TO READ THIS BRIEF:
+
+  1. Read Problem completely. Form your own assessment.
+  2. Write down your thinking. Don't skip this.
+  3. THEN read Our Thinking and compare.
+  4. Collaborate on Synthesis.
+  5. Make the call together.
+
+  If you read Our Thinking first, the method fails. It's a discipline.
+  Worth it.
+
+# END OF SOCRATIC_BRIEF_TEMPLATE.yaml
